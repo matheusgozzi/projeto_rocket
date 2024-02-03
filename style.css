@@ -6,25 +6,17 @@
 
 :root {
   --text-color: white;
-  --bg-url: url(./assets/bg-mobile.jpg);
+  --bg-color: linear-gradient(to right, rgb(0, 0, 0), rgb(93, 91, 91));
   --stroke-color: rgba(255, 255, 255, 0.5);
-  --surface-color: rgba(255, 255, 255, 0.05);
-  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --bg-lista: linear-gradient(to right, rgb(93, 91, 91), rgb(0, 0, 0));
+  --seletor-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(255, 255, 255, 0.2);
-  --switch-bg-url: url(./assets/moon-stars.svg);
+  --bg-menu-lateral: linear-gradient(to right, rgba(39, 39, 39, 0.3), rgb(0, 0, 0));
+  --bg-menu-alternativo: rgb(112, 112, 112);
 }
 
-.light {
-  --text-color: black;
-  --bg-url: url(./assets/bg-mobile-light.jpg);
-  --stroke-color: rgba(0, 0, 0, 0.5);
-  --surface-color: rgba(0, 0, 0, 0.05);
-  --surface-color-hover: rgba(0, 0, 0, 0.02);
-  --highlight-color: rgba(0, 0, 0, 0.1);
-  --switch-bg-url: url(./assets/sun.svg);
-}
 body {
-  background: var(--bg-url) no-repeat top center/cover;
+  background-image: var(--bg-color);
   height: 100vh;
 }
 
@@ -32,12 +24,53 @@ body * {
   font-family: "Inter", sans-serif;
   color: var(--text-color);
 }
+.menu_lateral {
+  width: 63px;
+  height: 100%;
+  background-image: var(--bg-menu-lateral);
+  padding: 40px 0 40px 1%;
+  box-shadow:3px 0 0 rgba(135, 135, 135, 0.5) ;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  transition: 0.2s;
+}
+.menu_lateral:hover{
+    width: 280px;
+}
+
+.botao_expandir i {
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  margin-left: 2px;
+}
+ul li.menu_item:hover {
+  background-color: rgb(90, 90, 90);
+  transition: 0.2s;
+}
+
+ul li.menu_item {
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 30px 5% 30px 0%;
+  display: flex;
+  margin-left: 2px;
+}
+
+.texto_link {
+  margin-left: 25px;
+}
 
 #container {
-  width: 100%;
-  max-width: 558px;
+  width: 100%;                                  
+  max-width: 350px;
   margin: 56px auto 0px;
   padding: 0 24px;
+  height: 100vh;
 }
 
 /* profile */
@@ -50,6 +83,7 @@ body * {
 #profile img {
   width: 112px;
   margin: auto;
+  border-radius: 50%;
 }
 
 #profile p {
@@ -58,61 +92,29 @@ body * {
   margin-top: 8px;
 }
 
-/* switch */
-
-#switch {
-  position: relative;
-  width: 64px;
-  margin: 4px auto;
-}
-#switch button {
-  width: 32px;
-  height: 32px;
-  background: white var(--switch-bg-url) no-repeat center;
-  border: 0;
-  border-radius: 50%;
-
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-
-  animation: slide-back 0.2s;
-}
-
-.light #switch button {
-  animation: slide-in 0.2s forwards;
-}
-#switch button:hover {
-  outline: 8px solid var(--highlight-color);
-}
-#switch span {
-  display: block;
-  width: 64px;
-  height: 24px;
-  background: var(--surface-color);
-  border: 1px solid var(--stroke-color);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 9999px;
-}
-
 /* lista */
-ul {
+.lista_principal {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding: 24px 0;
+  text-align: center;
+  justify-content: center;
+  border: 1px solid red;
 }
 
-ul li a {
+.lista_principal li{
+  display: flex;
+  justify-content: center;
+}
+
+.lista_principal li a {
   border: 1px solid var(--text-color);
   display: flex;
   justify-content: center;
   padding: 16px 24px;
-  background: var(--surface-color);
+  background: var(--bg-lista);
   border: 1px solid var(--stroke-color);
   border-radius: 8px;
   backdrop-filter: blur(4px);
@@ -123,39 +125,36 @@ ul li a {
   transition: background 0.3s;
 }
 
-ul li a:hover {
-  background: var(--surface-color-hover);
+.lista_principal li a:hover {
+  background: var(--seletor-hover);
   border: 1px solid white;
 }
 
-/* social links */
-
-#social_links {
-  display: flex;
-  justify-content: center;
-
-  padding: 24px 0;
-  font-size: 24px;
+.lista_principal ion-icon {
+ /*margin: 1px 5px 0 0;*/
+  
 }
-
-#social_links a {
+/*
+.lista_principal li{
   display: flex;
+  width: 280px;
+}
+*/
+.lista_principal li a{
+  width: 100%;
+  display: flex;
+  gap: 5px;
+  justify-content:center;
   align-items: center;
-  justify-content: center;
-  padding: 16px;
-  border-radius: 50%;
-  transition: background 0.2s;
-}
-
-#social_links a:hover {
-  background: var(--highlight-color);
 }
 
 footer {
   padding: 24px 0;
   text-align: center;
   font-size: 14px;
+ 
 }
+
 
 /* media queries */
 @media (min-width: 700px) {
